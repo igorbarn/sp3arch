@@ -1,0 +1,15 @@
+# Создаем директории
+mkdir -p ~/bin
+mkdir -p ~/.config/systemd/user
+
+# Копируем скрипт
+cp http_sync.sh ~/bin/
+chmod +x ~/bin/http_sync.sh
+
+# Активируем сервис
+systemctl --user daemon-reload
+systemctl --user enable http-sync.timer
+systemctl --user start http-sync.timer
+
+# Проверяем статус
+systemctl --user status http-sync.timer

@@ -1,0 +1,25 @@
+# 04/11/25
+# Улучшенный скрипт с поддержкой локального и удаленного источников
+
+1. Как тестировать
+
+chmod +x create_test_data.sh
+./create_test_data.sh
+
+2. Запустите синхронизацию:
+
+chmod +x http_sync.sh
+./http_sync.sh
+
+3. Проверьте результат:
+
+echo "Файлы в целевой директории:"
+find ~/sync_files -type f
+echo "Лог файл:"
+tail -20 ~/sync_test.log
+
+4. Для тестирования с удаленным источником измените конфигурацию:
+
+SOURCE_TYPE="remote"
+SOURCE_PATH="http://example.com/files/"
+
