@@ -1,0 +1,38 @@
+Установка и настройка
+
+1. Разместите скрипт и настройте права:
+
+sudo cp http_sync.sh /usr/local/bin/
+sudo chmod +x /usr/local/bin/http_sync.sh
+sudo chown root:root /usr/local/bin/http_sync.sh
+
+2. Создайте конфигурационный файл:
+
+sudo nano /etc/http_sync.conf
+
+3. Создайте необходимые директории:
+
+sudo mkdir -p /var/http_files
+sudo mkdir -p /var/http_files_backup
+sudo mkdir -p /tmp/http_sync
+
+4. Активируйте timer:
+
+sudo systemctl daemon-reload
+sudo systemctl enable http-sync.timer
+sudo systemctl start http-sync.timer
+
+Проверка статуса
+
+# Проверить статус таймера
+sudo systemctl status http-sync.timer
+
+# Посмотреть список таймеров
+sudo systemctl list-timers
+
+# Запустить службу вручную
+sudo systemctl start http-sync.service
+
+# Посмотреть логи
+sudo journalctl -u http-sync.service
+
